@@ -14,6 +14,14 @@
   <link rel="icon" href="/assets/icons/favicon.ico">
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+
   <!-- Navbar -->
   <header>
     <nav class="navbar">
@@ -35,13 +43,17 @@
 
   <!-- Hero Section -->
   <section id="hero" class="hero-section">
+    <div class="hero-background"></div>
     <div id="particles-js"></div>
     <div class="hero-content">
+      <div class="hero-profile">
+        <img src="/assets/images/profile-picture.JPG" alt="Akshay Khandizod" class="hero-avatar">
+      </div>
       <h1>Akshay Khandizod</h1>
       <h2>Senior Game Developer & Project Lead</h2>
       <h3 class="animated-headline">Building magical worlds for kids through code</h3>
       <div class="hero-buttons">
-        <a href="/cv/Akshay_Khandizod.pdf" class="btn" target="_blank"><i class="fa-solid fa-download"></i> Download CV</a>
+        <a href="/cv/CV_Akshay_Khandizod.pdf" class="btn" target="_blank"><i class="fa-solid fa-download"></i> Download CV</a>
         <a href="#projects" class="btn btn-secondary">View Projects</a>
       </div>
     </div>
@@ -50,7 +62,7 @@
   <!-- About Me -->
   <section id="about" class="about-section">
     <div class="about-container">
-      <img src="/assets/images/profile-placeholder.png" alt="Profile Photo" class="profile-photo">
+      <img src="/assets/images/profile-picture.JPG" alt="Profile Photo" class="profile-photo">
       <div class="about-text">
         <h2>About Me</h2>
         <p>I am a Senior Software Engineer & Project Lead with 7.5+ years of experience in mobile game development. I have led successful product lines like Tizi and Timpy and contributed significantly to Kiddopia. My expertise includes Unity, Automation Tools, SDK Creation, HLD/LLD Architecture, and Team Management.</p>
@@ -61,10 +73,46 @@
   <!-- Projects -->
   <section id="projects" class="projects-section">
     <h2>Featured Projects</h2>
+    <!-- Image Carousel Start -->
+    <div class="image-carousel">
+      <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="/assets/images/carousal/Little_Angel.webp" alt="Little Angel" class="carousel-image">
+            <div class="carousel-caption">
+              <h3>Little Angel</h3>
+              <p>Educational games for early childhood development</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/images/carousal/Timpy.webp" alt="Timpy" class="carousel-image">
+            <div class="carousel-caption">
+              <h3>Timpy Games</h3>
+              <p>Creative and imaginative gameplay experiences</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/images/carousal/Tizi.webp" alt="Tizi" class="carousel-image">
+            <div class="carousel-caption">
+              <h3>Tizi Town</h3>
+              <p>Interactive world-building adventures</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+      <div class="carousel-indicators">
+        <button class="indicator active" data-slide="0"></button>
+        <button class="indicator" data-slide="1"></button>
+        <button class="indicator" data-slide="2"></button>
+      </div>
+    </div>
+    <!-- Image Carousel End -->
     <div class="projects-carousel">
       <!-- Kiddopia -->
       <div class="project-card" data-aos="fade-up">
-        <img src="/assets/images/kiddopia-thumb.png" alt="Kiddopia Logo">
+        <img src="/assets/images/logo/Kiddopia_Logo.png" alt="Kiddopia Logo">
         <h3>Kiddopia</h3>
         <p>Role: Project Lead & Senior Developer</p>
         <p>Tech: Unity, Python, FastAPI</p>
@@ -75,7 +123,7 @@
       </div>
       <!-- Tizi -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="/assets/images/tizi-thumb.png" alt="Tizi Games Logo">
+        <img src="/assets/images/logo/Tizi_Logo.png" alt="Tizi Games Logo">
         <h3>Tizi Games Collection</h3>
         <p>Role: Project Lead & Senior Developer</p>
         <p>Tech: Unity, Python, FastAPI</p>
@@ -86,7 +134,7 @@
       </div>
       <!-- Timpy -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="/assets/images/timpy-thumb.png" alt="Timpy Games Logo">
+        <img src="/assets/images/logo/Timpy_Logo.png" alt="Timpy Games Logo">
         <h3>Timpy Games Collection</h3>
         <p>Role: Project Lead & Senior Developer</p>
         <p>Tech: Unity, Python, FastAPI</p>
@@ -219,14 +267,20 @@
       <div class="footer-social">
         <a href="mailto:akshaykhandizod97@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
         <a href="https://www.linkedin.com/in/akshay-khandizod" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="/cv/Akshay_Khandizod.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>
+        <a href="/cv/CV_Akshay_Khandizod.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>
       </div>
     </div>
   </footer>
 
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
   <!-- Scripts -->
   <script src="/js/particles.min.js"></script>
   <script src="/js/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="/js/main.js"></script>
   <script>
