@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Particles.js background
   if (window.particlesJS) {
-    particlesJS.load('particles-js', '/js/particles.json', function () {
+    particlesJS.load('particles-js', 'js/particles.json', function () {
       // Callback after particles config loads
     });
   }
