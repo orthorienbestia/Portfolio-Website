@@ -251,6 +251,7 @@ header {
 .projects-section h2,
 .experience-section h2,
 .skills-section h2,
+.technical-expertise-section h2,
 .certifications-section h2,
 .contact-section h2 {
   font-size: 2.5rem;
@@ -264,6 +265,7 @@ header {
 .projects-section h2::after,
 .experience-section h2::after,
 .skills-section h2::after,
+.technical-expertise-section h2::after,
 .certifications-section h2::after,
 .contact-section h2::after {
   content: '';
@@ -402,6 +404,69 @@ header {
 .skill-category li {
   margin-bottom: 0.5rem;
   font-size: 1rem;
+}
+
+/* Technical Expertise Section */
+.technical-expertise-section {
+  background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
+  padding: 4rem 0 2rem 0;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+}
+
+.expertise-category {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 1.5rem 2rem;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.expertise-category:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.expertise-category h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+}
+
+.expertise-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.expertise-category li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text);
+}
+
+.expertise-category li::before {
+  content: "▸";
+  color: var(--secondary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .certifications-section {
@@ -717,7 +782,7 @@ footer {
 
 /* Responsive Styles */
 @media (max-width: 900px) {
-  .about-container, .skills-grid, .projects-carousel, .certifications-grid {
+  .about-container, .skills-grid, .projects-carousel, .certifications-grid, .expertise-grid {
     flex-direction: column;
     align-items: center;
   }
@@ -745,6 +810,11 @@ footer {
   
   .carousel-btn.next {
     right: 10px;
+  }
+  
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 
@@ -806,6 +876,25 @@ footer {
   
   .carousel-caption p {
     font-size: 0.9rem;
+  }
+  
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .expertise-category {
+    padding: 1rem 1.5rem;
+  }
+  
+  .expertise-category h3 {
+    font-size: 1rem;
+  }
+  
+  .expertise-category li {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
   }
   
   .hero-buttons {
