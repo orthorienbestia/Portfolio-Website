@@ -408,7 +408,7 @@ header {
 
 /* Technical Expertise Section */
 .technical-expertise-section {
-  background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   padding: 4rem 0 2rem 0;
 }
 
@@ -470,7 +470,7 @@ header {
 }
 
 .certifications-section {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
   padding: 4rem 0 2rem 0;
 }
 
@@ -498,7 +498,7 @@ header {
 }
 
 .contact-section {
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   padding: 4rem 0 2rem 0;
   text-align: center;
 }
@@ -780,6 +780,80 @@ footer {
   box-shadow: var(--shadow-hover);
 }
 
+/* Hero Social Buttons Styling */
+.hero-social-buttons {
+  position: absolute;
+  top: 50%;
+  right: 2.5rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  z-index: 2;
+}
+.hero-social-buttons a {
+  background: rgba(30, 30, 30, 0.85);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+  border: 2px solid transparent;
+}
+.hero-social-buttons a:hover {
+  transform: scale(1.13) rotate(-8deg);
+  background: linear-gradient(135deg, #0077b5 0%, #1dbf73 100%);
+  color: #fff200;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  border-color: #fff200;
+}
+.hero-social-buttons a img {
+  max-width: 60%;
+  max-height: 60%;
+  filter: brightness(0) invert(1);
+  transition: filter 0.2s;
+}
+.hero-social-buttons a:hover img {
+  filter: brightness(1) invert(0) drop-shadow(0 0 4px #fff200);
+}
+
+/* LeetCode icon specific: match other social buttons */
+.hero-social-buttons a.leetcode-icon {
+  background: rgba(30, 30, 30, 0.85);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+  border: 2px solid transparent;
+}
+.hero-social-buttons a.leetcode-icon:hover {
+  transform: scale(1.13) rotate(-8deg);
+  background: linear-gradient(135deg, #0077b5 0%, #1dbf73 100%);
+  color: #fff200;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  border-color: #fff200;
+}
+.hero-social-buttons a.leetcode-icon img {
+  max-width: 60%;
+  max-height: 60%;
+  filter: brightness(0) invert(1);
+  transition: filter 0.2s;
+}
+.hero-social-buttons a.leetcode-icon:hover img {
+  filter: brightness(1) invert(0) drop-shadow(0 0 4px #fff200);
+}
+
 /* Responsive Styles */
 @media (max-width: 900px) {
   .about-container, .skills-grid, .projects-carousel, .certifications-grid, .expertise-grid {
@@ -815,6 +889,15 @@ footer {
   .expertise-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  
+  .hero-social-buttons {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1.5rem 0 0 0;
+    gap: 1.5rem;
+    transform: none;
   }
 }
 
