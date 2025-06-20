@@ -73,11 +73,88 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Particles.js background
-  if (window.particlesJS) {
-    particlesJS.load('particles-js', 'js/particles.json', function () {
-      // Callback after particles config loads
-    });
+  // Hero background particles using Three.js (online CDN)
+  // Remove old particles.js code and add Three.js animated icon particles
+  const heroBg = document.getElementById('particles-js');
+  if (heroBg) {
+    // Create canvas
+    const canvas = document.createElement('canvas');
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.display = 'block';
+    canvas.style.position = 'absolute';
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.style.zIndex = 0;
+    heroBg.appendChild(canvas);
+
+    // Icon URLs (SVG/PNG, transparent background, 48x48 or 64x64 recommended)
+    const iconUrls = [
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg'
+    ];
+
+    // Load Three.js from CDN
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js';
+    script.onload = () => {
+      // Load all icon textures
+      const loader = new THREE.TextureLoader();
+      Promise.all(iconUrls.map(url => new Promise(resolve => loader.load(url, resolve))))
+        .then(textures => {
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(75, heroBg.offsetWidth / heroBg.offsetHeight, 0.1, 1000);
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+          renderer.setSize(heroBg.offsetWidth, heroBg.offsetHeight);
+          renderer.setClearColor(0x000000, 0); // transparent
+
+          // Create icon particles
+          const particles = 24; // Fewer, less distracting
+          const sprites = [];
+          for (let i = 0; i < particles; i++) {
+            const texture = textures[Math.floor(Math.random() * textures.length)];
+            const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.18 }); // dim
+            const sprite = new THREE.Sprite(material);
+            sprite.position.set(
+              (Math.random() - 0.5) * 32,
+              (Math.random() - 0.5) * 32,
+              (Math.random() - 0.5) * 32
+            );
+            sprite.scale.set(1.7, 1.7, 1); // Smaller size
+            scene.add(sprite);
+            sprites.push(sprite);
+          }
+
+          camera.position.z = 24;
+
+          function animate() {
+            requestAnimationFrame(animate);
+            // Rotate all sprites slowly
+            sprites.forEach((sprite, idx) => {
+              sprite.position.x += Math.sin(Date.now() * 0.0003 + idx) * 0.01;
+              sprite.position.y += Math.cos(Date.now() * 0.0002 + idx) * 0.01;
+            });
+            scene.rotation.y += 0.0012;
+            scene.rotation.x += 0.0006;
+            renderer.render(scene, camera);
+          }
+          animate();
+          window.addEventListener('resize', () => {
+            camera.aspect = heroBg.offsetWidth / heroBg.offsetHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(heroBg.offsetWidth, heroBg.offsetHeight);
+          });
+        });
+    };
+    document.body.appendChild(script);
   }
 
   // Enhanced Image Carousel Functionality
